@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test síly hesla</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+</head>
+<body>
+    <h2>Zadejte heslo pro testování síly</h2>
+    <input type="password" id="password" placeholder="Zadejte heslo">
+    <button onclick="testPassword()">Otestovat</button>
+    <p id="result"></p>
+
+    <script>
+        function testPassword() {
+            var password = document.getElementById("password").value;
+            var result = zxcvbn(password);
+            var strengthText = ["Velmi slabé", "Slabé", "Střední", "Silné", "Velmi silné"];
+            document.getElementById("result").innerHTML = "Síla hesla: " + strengthText[result.score];
+        }
+    </script>
+</body>
+</html>
